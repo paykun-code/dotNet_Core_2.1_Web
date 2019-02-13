@@ -21,8 +21,8 @@ Note: Please backup your running source code first.
    3. Import this two name spaces 
         1) using Paykun;
         2) using Paykun.Json;
-
-   4. Implementation
+   4. Add 'Newtonsoft.Json' NuGet to your project    
+   5. Implementation
         
       ```php
       // Customer details
@@ -75,7 +75,10 @@ Note: Please backup your running source code first.
 
        /*To render the direct form*/
        string _res = _payment.Submit();
-       Message = _res;
+       //_res => use this html to render default payment form. if you want custom form then
+       // uncomment this line of code and comment out submit method
+       //PkCustomForm requestData = _payment.getRequestData(); ==> For custom form    
+       //Message = _res;
        
         ```
        
