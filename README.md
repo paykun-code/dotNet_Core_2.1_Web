@@ -27,8 +27,11 @@ Note: Please backup your running source code first.
       
       // Customer details
       string _name = "<Customer Name>";
+      
       string _email = "<Customer Email>";
+      
       string _mono = "<Customer Mobile Number>";
+      
 
        // Order details
        string _orderId = "ORD" + (new Random()).Next(111111111, 999999999).ToString(); // Order ID must be between 10 To 30 Characters and unique for all transactions
