@@ -24,14 +24,11 @@ Note: Please backup your running source code first.
 
    4. Implementation
         
-      
+      ```php
       // Customer details
       string _name = "<Customer Name>";
-      
       string _email = "<Customer Email>";
-      
       string _mono = "<Customer Mobile Number>";
-      
 
        // Order details
        string _orderId = "ORD" + (new Random()).Next(111111111, 999999999).ToString(); // Order ID must be between 10 To 30 Characters and unique for all transactions
@@ -80,11 +77,12 @@ Note: Please backup your running source code first.
        string _res = _payment.Submit();
        Message = _res;
        
+        ```
        
        
        
    Success/Failure page implementation
-               
+   ```php         
            //Add this code to your success or failure url page and you will get all the detail about the current transaction
            //You will get transaction Id in the success or failed url provided from your side.
            //Suppose you have provided success url like http://localhost:8080/transaction_success?payment-id=56156-59572-62823-64618
@@ -118,5 +116,5 @@ Note: Please backup your running source code first.
            }
            
            //This code should be added in success or failed page 
-               
+   ```           
 #<h3> In case of any query, please contact to support@paykun.com.</h3>
