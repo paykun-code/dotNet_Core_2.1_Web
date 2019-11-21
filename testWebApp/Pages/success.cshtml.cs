@@ -16,7 +16,7 @@ namespace testWebApp.Pages
             try
             {
                 string paymentId = HttpContext.Request.Query["payment-id"].ToString();
-                PaykunPayment _payment = new Paykun.PaykunPayment("907827924705710", "9ADEC6FF0C1804049C84F02B0871B3AC", "CA4CF211861A319F3A993FE8A672CC72", _isLive: false);
+                PaykunPayment _payment = new Paykun.PaykunPayment("", "", "", _isLive: false);
                 TransactionStatusRes response = _payment.GetTransactionStatus(paymentId);
             }
             catch (Exception ex) {
