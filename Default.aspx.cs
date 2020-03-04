@@ -25,8 +25,8 @@ public partial class _Default : System.Web.UI.Page
         // Change _isLive to false for sandbox mode, While using sandbox mode you will need to provide credintials for sandbox and not of live environment
         PaykunPayment _payment = new PaykunPayment("<merchantId>", "<accessToken>", "<encKey>", _isLive: false); 
 
-        //Mandatory
-        _payment.InitOrder(_orderId, Double.Parse(amount.Text) , product_name.Text, _successUrl, _failureUrl);
+        //Mandatory //Set 3d currency code as per your requirement like 'INR', 'USD', 'AUD' default is 'INR'
+        _payment.InitOrder(_orderId, Double.Parse(amount.Text) , product_name.Text, _successUrl, _failureUrl, currency: "INR");
 
         //Mandatory
         _payment.AddCustomer(name.Text, email.Text, contact.Text);

@@ -40,10 +40,10 @@ namespace Paykun
             this.BillingAddress = new PkAddress("", "", "", "", "");
         }
 
-        public void InitOrder(string _orderId, double _amount, string _productName, string _successUrl,string _failureUrl)
+        public void InitOrder(string _orderId, double _amount, string _productName, string _successUrl,string _failureUrl, string currency = "INR")
         {
 
-            this.OrderDetails = new PkOrder(_orderId, _amount, _productName, _successUrl, _failureUrl);
+            this.OrderDetails = new PkOrder(_orderId, _amount, _productName, _successUrl, _failureUrl, currency);
         }
 
         public void AddCustomer(string _name, string _email, string _mono)
@@ -97,7 +97,8 @@ namespace Paykun
             _encData.Add("udf_3", String.IsNullOrEmpty(this.udf_3) ? "" : this.udf_3);
             _encData.Add("udf_4", String.IsNullOrEmpty(this.udf_4) ? "" : this.udf_4);
             _encData.Add("udf_5", String.IsNullOrEmpty(this.udf_5) ? "" : this.udf_5);
-
+			_encData.Add("currency", this.OrderDetails.currency);
+			
             string DataString = this.GenerateDataString(_encData);
             string EncryptedReqData = (new Crypto()).Encrypt(DataString, this.EncryptionKey);
 
@@ -144,7 +145,7 @@ namespace Paykun
             _encData.Add("udf_3", String.IsNullOrEmpty(this.udf_3) ? "" : this.udf_3);
             _encData.Add("udf_4", String.IsNullOrEmpty(this.udf_4) ? "" : this.udf_4);
             _encData.Add("udf_5", String.IsNullOrEmpty(this.udf_5) ? "" : this.udf_5);
-
+			_encData.Add("currency", this.OrderDetails.currency);
             string DataString = this.GenerateDataString(_encData);
             string EncryptedReqData = (new Crypto()).Encrypt(DataString, this.EncryptionKey);
 
@@ -254,8 +255,9 @@ class PkOrder
         public string SuccessUrl;
         public string FailureUrl;
         public string OrderId;
-
-        public PkOrder(string _orderId, double _orderAmount, string _productName, string _successUrl, string _failureUrl)
+		public string currency;
+		
+        public PkOrder(string _orderId, double _orderAmount, string _productName, string _successUrl, string _failureUrl, string currency = "INR")
         {
             this.OrderId = _orderId;
             this.OrderAmount = _orderAmount;
@@ -263,6 +265,7 @@ class PkOrder
             this.SuccessUrl = _successUrl;
             this.FailureUrl = _failureUrl;
             this.FailureUrl = _failureUrl;
+			this.currency = currency;
         }
     }
 
